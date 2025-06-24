@@ -1,1 +1,2 @@
+# Al-Safwa-Charitable-Foundation
 this is the first commit to the project to initialize it after adding dark theme and language support 
