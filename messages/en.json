@@ -1,4 +1,14 @@
 {
+  "nav":{
+    "volunteer":"volunteer",
+    "donate":"donate",
+    "about":"about",
+    "activities":"activites",
+    "news":"news",
+    "branches":"braches",
+    "contact-us":"contact us"
+
+  },
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"

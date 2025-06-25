@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@theme{
+  --breakpoint-sm :500px;
+}
 
 @theme inline {
 
@@ -210,13 +213,20 @@
 
 @layer base {
   * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     @apply border-border outline-ring/50;
   }
    html {
     @apply scroll-smooth;
+    overflow: hidden;
+  
+   
   }
   body {
     @apply bg-background text-foreground;
+     font-size: 16px;
   }
 }
 
