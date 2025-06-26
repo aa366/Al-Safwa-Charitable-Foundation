@@ -1,12 +1,15 @@
-import {useTranslations} from 'next-intl';
+// import {useTranslations} from 'next-intl';
+// import Banner from '@/components/ui/banner';im
+//  import Latest from "@/components/news/latest";
 
- 
 export default function HomePage() {
   
-  const t = useTranslations('HomePage');
+  // const t = useTranslations('HomePage');
   return (
     <div>
-      <h1>{t('title')}</h1>
+     {/* <Banner /> */}
+     {/* <Latest /> */}
+     
       
     </div>
   );

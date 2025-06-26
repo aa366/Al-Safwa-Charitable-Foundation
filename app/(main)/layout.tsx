@@ -8,11 +8,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (<>
-          <Navbar />
-          <main className="bg-[hsl(216,24%,96%)] min-h-screen" >
+          <Navbar /> 
+          <main className="bg-[hsl(216,24%,96%)] min-h-screen  " >
             {children}
           </main>
-            <Footer />
+            {/* <Footer /> */}
             </>
          
   );

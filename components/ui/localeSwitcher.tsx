@@ -1,6 +1,6 @@
 
 import React from 'react'
-import setLanguageValue from "@/actions/set-language-action"
+import {setLanguageValue} from "@/actions/set-language-action"
 import { useRouter } from 'next/navigation';
 
 const LocaleSwitcher =   () => {

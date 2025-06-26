@@ -9,8 +9,22 @@
     "contact-us":"contact us"
 
   },
+  "footer":{
+ "donate":"donate",
+ "volunteer":"volunteer",
+ "welcom":"welcom to contact",
+ "news":"el safwat news",
+ "policy":"privacy policy",
+ "freq":"frequent questions",
+ "mes":"all rights reserved in el safwat charity"
+  },
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
-  }
+  },
+  "News":{
+    "title":"latest",
+    "titleSpan":"News",
+    "subTitle":"see all news in the charity"
+  } 
 }
