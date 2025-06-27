@@ -34,7 +34,7 @@ const Navbar =  () => {
 
 
   return (
-    <nav className={`flex justify-between flex-col w-screen  `}>
+    <nav className={`flex justify-between flex-col w-full  `}>
 
       <div className="flex pt-[5%]  w-full flex-col md:flex-row justify-between md:justify-evenly  lg:justify-between lg:px-[3%] md:pt-[3%] ">
 
@@ -84,30 +84,30 @@ const Navbar =  () => {
         </div>
       </div>
 
-      <div className= {`rounded-r-2xl   justify-between flex-col p-1 items-center text-center top-0 left-0  h-screen w-[55%]  bg-linear-to-t  from-green-900 to-green-600 transition ease-in-out duration-300 fixed ${show?"flex":"hidden"} md:flex md:static md:mt-5 md:h-fit md:w-full  md:rounded-none md:flex-row-reverse `}>
+      <div className= {`rounded-r-2xl   justify-between flex-col p-1 items-center text-center top-0 left-0  h-screen w-[55%]  bg-linear-to-t  from-green-900 to-green-600 transition ease-in-out duration-300 fixed ${show?"flex":"hidden"} md:flex md:static md:mt-5 md:h-fit md:w-full  md:rounded-none md:flex-row-reverse z-10`}>
        
    <ul className="p-2  justify-between items-baseline  flex capitalize gap-5   text-xl w-full md:w-fit  flex-col md:flex-row md:gap-2   ">
 
-    <li className="text-white font-bold w-full md:w-auto p-1 text-4xl  md:hidden">
+    <li className="text-white font-bold w-full md:w-auto p-1 text-4xl hover:text-red-400 cursor-pointer md:hidden">
        <IoMdClose onClick={handleShow}/>
     </li>
 
-          <li className={` text-white font-bold w-full md:w-auto p-1 text-2xl  `}>
+          <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             <Link href={`/about`}>{t("about")}</Link>
           </li>
-          <li className={` text-white font-bold w-full md:w-auto p-1 text-2xl  `}>
+          <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
             <Link href={`/news`}> {t("news")}</Link>
           </li>
-          <li className={` text-white font-bold w-full md:w-auto p-1 text-2xl  `}>
+          <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
             <Link href={`/activities`}> {t("activities")}</Link>
           </li>
-          <li className={` text-white font-bold w-full md:w-auto p-1 text-2xl  `}>
+          <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
             <Link href={`/branches`}> {t("branches")}</Link>
           </li>
-          <li className={` text-white font-bold w-full md:w-auto p-1 text-2xl  min-w-fit`}>
+          <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  min-w-fit`}>
             {" "}
             <Link href={`/contact-us`}>{t("contact-us")}</Link>
           </li>

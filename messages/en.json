@@ -26,5 +26,10 @@
     "title":"latest",
     "titleSpan":"News",
     "subTitle":"see all news in the charity"
+  } ,
+  "activities":{
+    "title":"activities",
+    "titleSpan":"Now",
+    "subTitle": "look at  the latest activities"
   } 
 }

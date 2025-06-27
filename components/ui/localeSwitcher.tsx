@@ -1,22 +1,57 @@
-
+"use client";
 import React from 'react'
-import {setLanguageValue} from "@/actions/set-language-action"
-import { useRouter } from 'next/navigation';
+import {setLanguageValue,language} from "@/actions/set-language-action"
+import { useEffect,useState } from 'react';
 
 const LocaleSwitcher =   () => {
-  const router = useRouter()
+ 
+  const [lang,setLang] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
 
-     const handleChange = (ele)=>{
-        setLanguageValue(ele)
+     const handleChange = async (value)=>{
+        await setLanguageValue(value)
+window.location.reload()
 
-  router.refresh();
+   
+  
+    }
+   
+  
+    useEffect( () => {
+        const fetchLang = async ()=>{
+       try {
+
+       setIsLoading(true)
+       const currentLang = await language()
+       setLang(currentLang)
+
+       } catch (error) {
+        console.error(error)
+        setLang("ar")
+        
+       }finally{
+        setIsLoading(false)
+       }
     }
 
+       fetchLang()
+      return () => {
+        
+      };
+    }, [lang]);
+  
+if(isLoading){
+  return(
+    <div className='border-2 rounded-sm p-1'>
+      Loading...
+    </div>
+  )
+}
 
   return (
    
     <div>
-        <select name="" id="" defaultValue={`en` } onChange={(e)=>{handleChange(e.target.value)}} className='border-2 rounded-sm p-1'>
+        <select  defaultValue={lang} onChange={(e)=>{handleChange(e.target.value)}} className='border-2 rounded-sm p-1' disabled={isLoading}>
             <option value="en">English</option>
             <option value="ar">عربي</option>
         </select>
