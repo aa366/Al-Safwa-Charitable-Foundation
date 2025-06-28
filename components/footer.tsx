@@ -13,7 +13,7 @@ import { FaPhone, FaSackDollar, FaXTwitter } from "react-icons/fa6";
 const Footer = async () => {
   const  t = await  getTranslations("footer");
   return (
-    <footer className="border-t-[.5rem] border-green-600 mt-5 ">
+    <footer className="border-t-[.5rem] border-green-600  ">
 
       <div className="flex flex-col justify-center">
 
