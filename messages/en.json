@@ -31,5 +31,7 @@
     "title":"activities",
     "titleSpan":"Now",
     "subTitle": "look at  the latest activities"
-  } 
+  } ,
+  "stracture":{"msg" : "page under stracture",
+"404": "there is no page"}
 }

@@ -10,7 +10,7 @@ import { language } from "@/actions/set-language-action";
 import {useTranslations} from 'next-intl';
 
 
-const Activities = (titileClass: { titileClass?: string }) => {
+const Activities = ({titileClass}: { titileClass?: string }) => {
   const t = useTranslations("activities")
   const [activities, setactivities] = useState([]);
 
@@ -52,7 +52,7 @@ const Activities = (titileClass: { titileClass?: string }) => {
   return (
     <div>
       <div
-        className={`flex items-center  p-3 bg-gray-300 gap-3 w-full sm:w-[80%] md:w-[50%] lg:w-[30%] sm:rounded-2xl text-3xl justify-self-center my-2 justify-center ${titileClass}`}
+        className={`flex items-center  p-3 bg-gray-300 gap-3 w-full sm:w-[80%] md:w-[50%] lg:w-[30%] sm:rounded-2xl text-3xl justify-self-center my-2 justify-center  ${titileClass}`}
       >
         <FiActivity className="text-4xl" />
         <div>
@@ -64,7 +64,7 @@ const Activities = (titileClass: { titileClass?: string }) => {
       </div>
 
       <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-6" >
           {" "}
          
           {activities && activities.map((ele)=>( <GridItem key={ele.id} path={"activities/"} img={ele.img} id={ele.id} title={ele.title}/>)) }

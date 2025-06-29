@@ -12,7 +12,7 @@ import { language } from "@/actions/set-language-action";
 import {useTranslations} from 'next-intl';
 
 
-const Latest = (titileClass: { titileClass?: string }) => {
+const Latest = ({titileClass}: { titileClass?: string }) => {
   const t = useTranslations("News")
   const [news, setNews] = useState([]);
 
@@ -66,7 +66,7 @@ const Latest = (titileClass: { titileClass?: string }) => {
       </div>
 
       <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6" >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-6" >
           {" "}
          
           {news && news.map((ele)=>( <GridItem key={ele.id} path={"news/"}  img={ele.img} id={ele.id} title={ele.title}/>)) }

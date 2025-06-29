@@ -18,14 +18,17 @@ import {useTranslations} from 'next-intl';
 
 const Navbar =  () => {
   const [show,setShow] = useState(false)
+  const [divShow,setDivShow] = useState("hidden")
   const  t =  useTranslations("nav")
 
   const handleShow = ()=>{
     if (show == false) {
       setShow(true)
+      setDivShow("fixed")
 
     }else if (show == true) {
       setShow(false)
+        setDivShow("hidden")
     }
 
   }
@@ -55,7 +58,7 @@ const Navbar =  () => {
 
         <div className="flex justify-between md:items-center w-[100%] px-5 md:px-0  text-xl  gap-[5%] md:gap-0 p-[2%] sm:w-fit  ">
 
-          <Link className="flex justify-between gap-[5%] w-fit md:pr-2" href="tel:99444">
+          <Link onClick={handleShow} className="flex justify-between gap-[5%] w-fit md:pr-2" href="tel:99444">
             <h3 className="flex self-center  md:text-2xl">99444</h3>
             <div className="p-2 bg-[#353535] rounded-2xl md:p-2">
               <FaPhone className="text-3xl md:text-3xl   text-white bg-[#353535]  " />
@@ -63,7 +66,7 @@ const Navbar =  () => {
           </Link>
 
           <div className="flex justify-between  text-lg ">
-            <Link
+            <Link 
            className="flex justify-between gap-[5%] bg-red-800 text-white p-1 pl-2.5 md:p-2 md:pl-5 rounded-l-2xl hover:scale-103 items-center"
               href={`/volunteering`}
             >
@@ -71,9 +74,10 @@ const Navbar =  () => {
               <FaChild className="text-2xl " />
             </Link>
 
-            <Link
+            <Link onClick={handleShow}
               className="flex justify-between gap-[5%] bg-blue-800 text-white p-1 pl-2.5 md:p-2 md:pl-5 rounded-r-2xl hover:scale-103 items-center"
               href={`/donation-main`}
+             
             >
               <h3>  {t("donate")} </h3>
               <FaSackDollar className="text-2xl " />
@@ -83,6 +87,7 @@ const Navbar =  () => {
         </div>
         </div>
       </div>
+      <div className={` top-0 left-0 w-screen h-screen ${divShow} bg-[rgb(255,255,255,.5)] md:hidden`} onClick={handleShow}></div>
 
       <div className= {`rounded-r-2xl   justify-between flex-col p-1 items-center text-center top-0 left-0  h-screen w-[55%]  bg-linear-to-t  from-green-900 to-green-600 transition ease-in-out duration-300 fixed ${show?"flex":"hidden"} md:flex md:static md:mt-5 md:h-fit md:w-full  md:rounded-none md:flex-row-reverse z-10`}>
        
@@ -93,23 +98,23 @@ const Navbar =  () => {
     </li>
 
           <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
-            <Link href={`/about`}>{t("about")}</Link>
+            <Link onClick={handleShow} href={`/about`}>{t("about")}</Link>
           </li>
           <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
-            <Link href={`/news`}> {t("news")}</Link>
+            <Link onClick={handleShow} href={`/news`}> {t("news")}</Link>
           </li>
           <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
-            <Link href={`/activities`}> {t("activities")}</Link>
+            <Link onClick={handleShow} href={`/activities`}> {t("activities")}</Link>
           </li>
           <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  `}>
             {" "}
-            <Link href={`/branches`}> {t("branches")}</Link>
+            <Link onClick={handleShow} href={`/branches`}> {t("branches")}</Link>
           </li>
           <li className={` text-white hover:text-red-400 font-bold w-full md:w-auto p-1 text-2xl  min-w-fit`}>
             {" "}
-            <Link href={`/contact-us`}>{t("contact-us")}</Link>
+            <Link onClick={handleShow} href={`/contact-us`}>{t("contact-us")}</Link>
           </li>
         </ul>
         <ul className="flex justify-between  p-3 w-full md:w-[20%]">

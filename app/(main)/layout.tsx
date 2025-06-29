@@ -1,5 +1,5 @@
 import Navbar from "@/components/nav-bar";
-// import Footer from "@/components/footer";
+import Footer from "@/components/footer";
 
 
 export default function RootLayout({
@@ -9,10 +9,10 @@ export default function RootLayout({
 }>) {
   return (<>
           <Navbar /> 
-          <main className="bg-[hsl(216,24%,96%)] min-h-screen  " >
+          <main className="bg-[hsl(216,24%,96%)] min-h-[50vh] py-2  " >
             {children}
           </main>
-            {/* <Footer /> */}
+            <Footer />
             </>
          
   );

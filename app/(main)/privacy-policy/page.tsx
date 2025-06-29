@@ -1,8 +1,10 @@
 import React from 'react'
-
+import UnderStructure from '@/components/ui/underStructure'
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <UnderStructure />
+    </div>
   )
 }
 

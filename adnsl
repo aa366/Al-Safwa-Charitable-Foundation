@@ -1,0 +1,60 @@
+[33mcommit f01d0ebff3981c39e4f97a3fd2f212f8d2b4b027[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Sun Jun 29 12:17:19 2025 +0300
+
+    add 4 pages
+
+[33mcommit 1fb3adec1829428e13d9f126c839d3fc3bf1237a[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Sat Jun 28 22:23:05 2025 +0300
+
+     add about and contact-us pages
+
+[33mcommit 04ad6c13d41c4d5f564f0d5596194809299b9345[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Fri Jun 27 22:42:32 2025 +0300
+
+    add about page
+
+[33mcommit b839f0eea77e5c142fdb32494c64dc8326c17bfc[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Thu Jun 26 13:02:19 2025 +0300
+
+    add banner ,footer ,latest news,firebase
+
+[33mcommit 33912a64c5098d62b8ddbecd16aab4e8d82c892a[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Wed Jun 25 19:04:23 2025 +0300
+
+    add Nav Bar
+
+[33mcommit bb0ad77e3c3b87b2ef22f4ea38eb6de3af866292[m
+Merge: 9cb4812 c53102c
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Tue Jun 24 19:59:34 2025 +0300
+
+    init project
+
+[33mcommit 9cb48120cc3e88aa55d8af3849ccea7a2ca77902[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Tue Jun 24 19:51:09 2025 +0300
+
+    init project
+
+[33mcommit 9529fbc81c706780a9dc4d8d197154e5c0de7ed7[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Tue Jun 24 19:43:20 2025 +0300
+
+    init project
+
+[33mcommit c53102c29a8c9708e1de5f7c1b38fae86fe0f317[m
+Author: Abdelwahab Anwr <77800091+aa366@users.noreply.github.com>
+Date:   Tue Jun 24 19:41:38 2025 +0300
+
+    Initial commit
+
+[33mcommit a7449a45349e72d494bda4cc2fd28821e922e089[m
+Author: Abdelwahab <aa3662067@gmail.com>
+Date:   Tue Jun 24 12:40:03 2025 +0300
+
+    Initial commit from Create Next App

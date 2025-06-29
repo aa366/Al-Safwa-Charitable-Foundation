@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Latest from '@/components/news/latest'
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <Latest titileClass='hidden'/>
+    </div>
   )
 }
 
