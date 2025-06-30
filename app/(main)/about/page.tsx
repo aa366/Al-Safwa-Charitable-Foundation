@@ -27,16 +27,7 @@ const Page =  () => {
       setIsLoading(false)
     }
   }
-  useEffect(() => {
-    const handleChangeLanguage = ()=>{
-      fetchAbout()
-    }
-    window.addEventListener("languagechange",handleChangeLanguage)
-    return () => {
-      window.removeEventListener("languagechange",handleChangeLanguage)
-      
-    };
-  }, []);
+
   
   useEffect(()=>{
     fetchAbout()
@@ -44,6 +35,7 @@ const Page =  () => {
 
     }
   },[])
+
   if(isLoading){
     return(
       <div className="flex items-center justify-center text-3xl">

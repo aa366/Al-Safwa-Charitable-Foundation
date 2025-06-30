@@ -6,7 +6,7 @@ import { getDoc, doc } from "firebase/firestore/lite";
 import { language } from "@/actions/set-language-action";
 import { Timestamp } from "firebase/firestore/lite"; // Don't forget to import Timestamp if you're creating it manually or for type safety
 
-const Page = ({ params }: { params: { slug: string } }) => {
+const Page = ({ params }) => {
   const [infos, setInfos] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 

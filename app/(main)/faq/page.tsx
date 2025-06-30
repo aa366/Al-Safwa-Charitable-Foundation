@@ -4,10 +4,9 @@ import { useState, useEffect } from "react";
 import { data } from "@/firebase/config";
 import { getDoc, doc } from "firebase/firestore/lite";
 import { language } from "@/actions/set-language-action";
-import { Timestamp } from "firebase/firestore/lite"; 
 import Collapsebtn from "@/components/ui/collapsebtn";
 
-const Page = ({ params }: { params: { slug: string } }) => {
+const Page = ({ params }) => {
   const [infos, setInfos] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,7 +19,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
       const querySnap = await getDoc(doc(data, "pages", "faq"));
       const newData = await querySnap.data();
 
- console.log(slug,lang,querySnap,newData) ;
+
      
       const filteredData = {
         ...newData,
