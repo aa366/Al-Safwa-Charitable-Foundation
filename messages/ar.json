@@ -6,7 +6,10 @@
     "activities":"انشطة",
     "news":"اخبار",
     "branches":"فروع",
-    "contact-us":" تواصل معنا"  
+    "contact-us":"اتصل بنا" ,
+    "home" : "الرئيسية",
+    "CommunityDevelopment": "المجتمع",
+    "team":"الفريق"
 
   }
   ,

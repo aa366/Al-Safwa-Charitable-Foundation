@@ -33,23 +33,7 @@ const Footer = async () => {
         </div>
 
         
-         <div className="flex justify-around  text-xl mt-2 md:text-2xl lg:text-3xl ">
-            <Link
-           className="flex justify-between gap-[5%] bg-red-800 text-white p-2 sm:p-3  rounded-xl hover:scale-103 items-center  "
-              href={`/volunteering`}
-            >
-              <h3>  {t("volunteer")} </h3>
-              <FaChild className="text-2xl md:text-3xl lg:text-4xl" />
-            </Link>
-
-            <Link
-            className="flex justify-between gap-[5%] bg-blue-800 text-white p-2 sm:p-3   rounded-xl hover:scale-103 items-center "
-              href={`/donation-main`}
-            >
-              <h3>  {t("donate")} </h3>
-              <FaSackDollar className="text-2xl md:text-3xl lg:text-4xl" />
-            </Link>
-          </div>
+        
         
 
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-3  text-center text-blue-700 capitalize">
@@ -63,6 +47,10 @@ const Footer = async () => {
           <Link href={`/faq`}>
             {" "}
             <li>{t("freq")}</li>
+          </Link>
+          <Link href={`/volunteering`}>
+            {" "}
+            <li>{t("volunteer")}</li>
           </Link>
         </ul>
 

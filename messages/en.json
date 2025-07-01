@@ -6,7 +6,10 @@
     "activities":"activites",
     "news":"news",
     "branches":"braches",
-    "contact-us":"contact us"
+    "contact-us":"contact us",
+    "home" : "home",
+    "CommunityDevelopment": "community",
+    "team":"team"
 
   },
   "footer":{

@@ -52,8 +52,8 @@ const Banner = () => {
   if (loading) return <div>Loading banner...</div>;
   if (imgs.length === 0) return <div>No banner images found</div>;
 
-  return (
-    <div className="relative shadow-sm">
+  return ( 
+    <div className="relative shadow-sm hidden sm:block">
       <button
         className="absolute top-1/2 -translate-y-1/2   sm:text-3xl bg-white p-1 rounded-lg lg:text-4xl hover:cursor-pointer left-[1%]"
         onClick={() => {

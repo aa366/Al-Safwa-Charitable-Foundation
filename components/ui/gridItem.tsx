@@ -2,7 +2,7 @@ import Link from "next/link";
 const GridItem = ({img, title ,id ,path}) => {
 
     return (
-      <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4" key={id}>
+      <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%]" key={id}>
         <Link href={`/${path + id}`}  >
         
           <img
