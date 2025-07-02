@@ -7,14 +7,33 @@ const Page = () => {
     const [isError,setIsError] = useState(false)
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState('')
+
+    const handleLogin = async (e)=>{
+      e.preventDefault();
+      setIsError(false)
+      try {
+        await signInWithEmailAndPassword(auth,email,password)
+        console.log("loged successfully ");
+        
+
+        
+      } catch (error) {
+        setIsError(true)
+        console.error(error);
+        
+
+        
+      }
+
+    }
     
 
     
     
-    // signInWithEmailAndPassword(auth,email , password)
+   
   return (
     <div className="w-full h-screen flex fixed justify-center pt-5 bg-gray-600 text-lg">
-      <form className="flex flex-col w-[95%] p-3 rounded-xl h-fit max-w-[400px]  bg-gray-300 items-center gap-4">
+      <form className="flex flex-col w-[95%] p-3 rounded-xl h-fit max-w-[400px]  bg-gray-300 items-center gap-4" onSubmit={handleLogin}>
         <h1>تسجيل دخول</h1>
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full justify-between px-1">
