@@ -2,17 +2,27 @@
 import {signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "@/firebase/config"
 import {useState,useEffect} from "react"
-
+import Dashboard from "./dashboard";
 const Page = () => {
+  // login system
     const [isError,setIsError] = useState(false)
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState('')
+    const [logged,setLogged] = useState(auth.currentUser)
+    const [isLoading,setIsLoading] = useState(true)
+
+    useEffect(() => {
+   setIsLoading(false)
+    }, []);
 
     const handleLogin = async (e)=>{
       e.preventDefault();
       setIsError(false)
+     
+      
       try {
         await signInWithEmailAndPassword(auth,email,password)
+        setLogged(auth.currentUser)
         console.log("loged successfully ");
         
 
@@ -26,12 +36,15 @@ const Page = () => {
       }
 
     }
-    
 
+    if(isLoading){
+      return(
+        <div className="text-center text-2xl text-bold mt-5">Loading ...</div>
+      )
+    }
     
-    
-   
-  return (
+if(false){
+    return (
     <div className="w-full h-screen flex fixed justify-center pt-5 bg-gray-600 text-lg">
       <form className="flex flex-col w-[95%] p-3 rounded-xl h-fit max-w-[400px]  bg-gray-300 items-center gap-4" onSubmit={handleLogin}>
         <h1>تسجيل دخول</h1>
@@ -58,6 +71,15 @@ const Page = () => {
       </form>
     </div>
   );
+}
+//dashboard
+
+return(
+  <>
+   <Dashboard />
+  </>
+)
+
 };
 
 export default Page;
