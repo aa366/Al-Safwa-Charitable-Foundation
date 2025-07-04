@@ -1,6 +1,6 @@
 "use client"
 import {useState,useEffect,useRef } from "react"
-import { Activities } from "./sub"
+import { Activities ,News ,Branches,Team,Faq,Vars} from "./sub"
  
 
 
@@ -8,6 +8,9 @@ const Dashboard = () => {
 
     const [isLoading,setIsLoading] = useState(true)
     const navRef = useRef([])
+    const [tab,setTab] = useState({
+
+    })
 
 
      const getRef = (element) => {
@@ -22,6 +25,15 @@ const Dashboard = () => {
 
     useEffect(() => {
         setIsLoading(false)
+        setTab({
+      activities:true,
+      news:false,
+      branches:false,
+      team:false,
+      faq:false,
+      vars:false
+
+    })
 
         return () => {
             
@@ -30,13 +42,41 @@ const Dashboard = () => {
 
     const handleShow = (e)=>{
         const ele =  e.target
-        console.log(navRef);
-        
         navRef.current.map((el)=>{
             if(el==null) return
             el.classList.remove("bg-amber-300")
         })
         ele.classList.add("bg-amber-300")
+        console.log(ele.textContent);
+        
+        switch (ele.textContent) {
+          case "الانشطة":
+            setTab({activities:true})
+            
+            break;
+          case "الاخبار":
+             setTab({news:true})
+
+            
+            break;
+          case "فروع":
+             setTab({branches:true})
+            break;
+          case "الفريق":
+             setTab({team:true})
+            
+            break;
+          case "الاسئلة":
+             setTab({faq:true})
+            
+            break;
+          case "متغيرات":
+             setTab({vars:true})
+            
+            break;
+        
+      
+        }
 
     }
  
@@ -55,11 +95,17 @@ const Dashboard = () => {
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>الاخبار</li>
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>فروع</li>
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>الفريق</li>
-        <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>فروع</li>
+        <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>الاسئلة</li>
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>متغيرات</li>
       </ul>
     </nav>
-    <Activities />
+
+    {tab.activities &&<Activities />}
+    {tab.news &&<News />}
+   {tab.branches && <Branches />}
+    {tab.team &&<Team />}
+   {tab.faq && <Faq />}
+    {tab.vars &&<Vars />}
 
     </div>
   )
