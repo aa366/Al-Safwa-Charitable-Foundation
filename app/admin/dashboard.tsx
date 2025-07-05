@@ -1,6 +1,6 @@
 "use client"
 import {useState,useEffect,useRef } from "react"
-import { Activities ,News ,Branches,Team,Faq,Vars} from "./sub"
+import { Activities ,News ,Branches,Team,Faq,About} from "./sub"
  
 
 
@@ -9,7 +9,12 @@ const Dashboard = () => {
     const [isLoading,setIsLoading] = useState(true)
     const navRef = useRef([])
     const [tab,setTab] = useState({
-
+  activities:null,
+      news:null,
+      branches:null,
+      team:null,
+      faq:null,
+      about:null
     })
 
 
@@ -31,7 +36,7 @@ const Dashboard = () => {
       branches:false,
       team:false,
       faq:false,
-      vars:false
+      about:false
 
     })
 
@@ -47,31 +52,39 @@ const Dashboard = () => {
             el.classList.remove("bg-amber-300")
         })
         ele.classList.add("bg-amber-300")
-        console.log(ele.textContent);
+       
+        setTab({
+  activities:null,
+      news:null,
+      branches:null,
+      team:null,
+      faq:null,
+      about:null
+    })
         
         switch (ele.textContent) {
           case "الانشطة":
-            setTab({activities:true})
+            setTab(p=>({...p,activities:true}))
             
             break;
           case "الاخبار":
-             setTab({news:true})
+             setTab(p=>({...p,news:true}))
 
             
             break;
           case "فروع":
-             setTab({branches:true})
+             setTab(p=>({...p,branches:true}))
             break;
           case "الفريق":
-             setTab({team:true})
+             setTab(p=>({...p,team:true}))
             
             break;
           case "الاسئلة":
-             setTab({faq:true})
+             setTab(p=>({...p,faq:true}))
             
             break;
-          case "متغيرات":
-             setTab({vars:true})
+          case "عنا":
+             setTab(p=>({...p,about:true}))
             
             break;
         
@@ -96,7 +109,7 @@ const Dashboard = () => {
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>فروع</li>
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>الفريق</li>
         <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>الاسئلة</li>
-        <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>متغيرات</li>
+        <li onClick={(e)=>handleShow(e)} ref={(el) => getRef(el)} className={`p-1 sm:p-2 text-[1.2rem] font-medium  sm:text-2xl cursor-pointer `}>عنا</li>
       </ul>
     </nav>
 
@@ -105,7 +118,7 @@ const Dashboard = () => {
    {tab.branches && <Branches />}
     {tab.team &&<Team />}
    {tab.faq && <Faq />}
-    {tab.vars &&<Vars />}
+    {tab.about &&<About />}
 
     </div>
   )
