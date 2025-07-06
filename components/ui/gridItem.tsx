@@ -1,11 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 const GridItem = ({img, title ,id ,path}) => {
 
     return (
       <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%]" key={id}>
         <Link href={`/${path + id}`}  >
         
-          <img
+          <Image
+          width={100}
+          height={100}
+          unoptimized={true}
+          priority={false}
             src={img}
               alt={title || 'News image'} 
             className="w-full h-full object-cover rounded-xl aspect-[4/3]"

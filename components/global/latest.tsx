@@ -65,8 +65,8 @@ const Latest = ({titileClass}: { titileClass?: string }) => {
         </div>
       </div>
 
-      <div>
-        <div className="flex overflow-x-scroll sm:flex-wrap  gap-4 pt-6" >
+      <div className="overflow-x-auto overflow-y-hidden ">
+        <div className="flex   sm:flex-wrap  gap-4 pt-6" >
           {" "}
          
           {news && news.map((ele)=>( <GridItem key={ele.id} path={"news/"}  img={ele.img} id={ele.id} title={ele.title}/>)) }

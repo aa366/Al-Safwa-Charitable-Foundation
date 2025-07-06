@@ -8,11 +8,13 @@ const Page = () => {
     const [isError,setIsError] = useState(false)
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState('')
-    const [logged,setLogged] = useState(auth.currentUser)
+    const [logged,setLogged] = useState(auth.currentUser !=null)
     const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
    setIsLoading(false)
+   console.log(auth.currentUser);
+   
     }, []);
 
     const handleLogin = async (e)=>{
@@ -23,7 +25,7 @@ const Page = () => {
       try {
         await signInWithEmailAndPassword(auth,email,password)
         setLogged(auth.currentUser)
-        console.log("loged successfully ");
+      
         
 
         
@@ -43,7 +45,9 @@ const Page = () => {
       )
     }
     
-if(false){
+if(!logged){
+  console.log("out");
+  
     return (
     <div className="w-full h-screen flex fixed justify-center pt-5 bg-gray-600 text-lg">
       <form className="flex flex-col w-[95%] p-3 rounded-xl h-fit max-w-[400px]  bg-gray-300 items-center gap-4" onSubmit={handleLogin}>

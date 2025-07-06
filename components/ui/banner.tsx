@@ -4,6 +4,7 @@ import { data } from "@/firebase/config";
 import { getDoc, doc } from "firebase/firestore/lite";
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
 const Banner = () => {
   const [imgs, setImgs] = useState([]);
   const [index, setIndex] = useState(0);
@@ -30,7 +31,7 @@ const Banner = () => {
         console.log("No such document!");
       }
     } catch (error) {
-      console.log("Error fetching banner:", error);
+      console.error("Error fetching banner:", error);
     } finally {
       setLoading(false);
     }
@@ -53,7 +54,7 @@ const Banner = () => {
   if (imgs.length === 0) return <div>No banner images found</div>;
 
   return ( 
-    <div className="relative shadow-sm hidden sm:block">
+    <div className="relative shadow-sm hidden sm:block lg:w-8/10 lg:mx-auto">
       <button
         className="absolute top-1/2 -translate-y-1/2   sm:text-3xl bg-white p-1 rounded-lg lg:text-4xl hover:cursor-pointer left-[1%]"
         onClick={() => {
@@ -70,7 +71,7 @@ const Banner = () => {
       >
         <FaArrowRight />
       </button>
-      <img src={imgs[index]} alt="bannerPhoto" className="h-full" />
+      <Image width={100} height={100} src={imgs[index]} alt="bannerPhoto"  className="w-full aspect-20/" unoptimized={true} />
     </div>
   );
 };

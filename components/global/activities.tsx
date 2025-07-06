@@ -7,33 +7,42 @@ import { useState, useEffect } from "react";
 import { data } from "@/firebase/config";
 import { getDocs, collection } from "firebase/firestore/lite";
 import { language } from "@/actions/set-language-action";
-import {useTranslations} from 'next-intl';
+import { useTranslations } from "next-intl";
+import { CiCircleMore } from "react-icons/ci";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-
-const Activities = ({titileClass}: { titileClass?: string }) => {
-  const t = useTranslations("activities")
+const Activities = ({ titileClass }: { titileClass?: string }) => {
+  const t = useTranslations("activities");
   const [activities, setactivities] = useState([]);
+  const  path  = usePathname();
+  const isHome = path == "/"
+  
 
   const fetchActivities = async () => {
     try {
-
-      const querySnap = await collection(data, "activities");
+    
+      
+      const querySnap =  collection(data, "activities");
       const activitiesDocs = await getDocs(querySnap);
-      const lang = await language()
-     
-      
+      const lang = await language();
 
-       const activitiesData = activitiesDocs.docs.map((doc) => {
-      const docData = doc.data(); 
-      const langData = docData[lang] ; 
+      const activitiesData = activitiesDocs.docs.map((doc) => {
+        const docData = doc.data();
+        const langData = docData[lang];
+
+        return {
+          id: doc.id,
+          ...docData,
+          ...langData,
+        };
+      });
+      const filtered = activitiesData.filter(({latest})=>latest) ;
+      console.log(filtered);
+      if (isHome) setactivities(filtered) 
+      if (!isHome)setactivities(activitiesData)
       
-      return {
-        id: doc.id,
-        ...docData,      
-        ...langData,     
-      }});
       
-      setactivities(activitiesData);
 
      
     } catch (error) {
@@ -47,7 +56,6 @@ const Activities = ({titileClass}: { titileClass?: string }) => {
 
     return () => {};
   }, []);
-     
 
   return (
     <div>
@@ -63,14 +71,29 @@ const Activities = ({titileClass}: { titileClass?: string }) => {
         </div>
       </div>
 
-      <div>
-        <div className="flex overflow-x-scroll sm:flex-wrap gap-4 pt-6 " >
+      <div className={`${isHome && "overflow-x-auto overflow-y-hidden"} `}>
+        <div className={`flex  ${!isHome &&"flex-wrap"} gap-4 pt-6 `}>
           {" "}
-         
-          {activities && activities.map((ele)=>( <GridItem key={ele.id} path={"activities/"} img={ele.img} id={ele.id} title={ele.title}/>)) }
-          {!activities && (<div className="flex justify-center"> 
-<FaSpinner  className="text-2xl"/>
-          </div>)}
+          {activities &&
+            activities.map((ele) => (
+              <GridItem
+                key={ele.id}
+                path={"activities/"}
+                img={ele.img}
+                id={ele.id}
+                title={ele.title}
+              />
+            ))}
+          {!activities && (
+            <div className="flex justify-center">
+              <FaSpinner className="text-2xl" />
+            </div>
+          )}
+           {isHome && <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%] ">
+            <Link href={`activities/`}>
+              <CiCircleMore className="w-3/4 h-3/4 flex justify-self-center self-center" />
+            </Link>
+          </div>}
         </div>
       </div>
     </div>

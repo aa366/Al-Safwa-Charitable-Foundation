@@ -1,5 +1,5 @@
 import React from 'react'
-import Latest from '@/components/news/latest'
+import Latest from '@/components/global/latest'
 const page = () => {
   return (
     <div>
