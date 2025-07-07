@@ -1,7 +1,7 @@
 
 import { FaSpinner } from "react-icons/fa";
 
-const loading = () => {
+const Loading = () => {
   return (
     <div className="fixed flex h-[100vh] w-full justify-center items-center">
         <FaSpinner className="animate-spin text-9xl text-black "/>
@@ -10,4 +10,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading

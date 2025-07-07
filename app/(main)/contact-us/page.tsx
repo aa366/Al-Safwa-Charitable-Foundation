@@ -6,41 +6,47 @@ import { language } from "@/actions/set-language-action";
 import { FiClock } from "react-icons/fi";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
+import Loading from "@/app/loading";
 
 const Page = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  let lang;
-  const [currentLang,setCurrentLang] = useState("")
+  const [email, setEmail] = useState(null);
+  let lang:string;
+  const [currentLang, setCurrentLang] = useState("");
 
   const fetchAbout = async () => {
     try {
-      setIsLoading(true);
+      
+  
       const querySnap = await getDoc(doc(data, "pages", "contact-us"));
       lang = await language();
-      setCurrentLang(lang)
+   
+      
+      setCurrentLang(lang);
+
       const aboutData = querySnap.data()[lang];
+    
+      
+      const mail = querySnap.data()["email"];
 
+      
 
+      setEmail(mail);
       setArticles(aboutData);
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
     fetchAbout();
-    return () => {};
+    setIsLoading(false);
   }, []);
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center text-3xl">
-        <span>Loading ...</span>
-      </div>
-    );
-  }
+
+  if (isLoading){return (<Loading /> )};
+
+
 
   return (
     <>
@@ -72,11 +78,20 @@ const Page = () => {
 
           <div className="flex w-full items-center flex-col p-2 gap-2">
             <h3
-              className={`w-fit flex  ${currentLang == "ar" && "flex-row-reverse"} `}
+              className={`w-fit flex  ${
+                currentLang == "ar" && "flex-row-reverse"
+              } `}
             >
               {" "}
-              <span>{articles["msg"][0]}</span>{"   "}
-              <a href="mailto:saalsa123456@gmail.com" className="font-bold text-blue-700 cursor-pointer" > saalsa123456@gmail.com </a>
+              <span>{articles["msg"][0]}</span>
+              {"   "}
+              <a
+                href={`mailto:${email && email}`}
+                className="font-bold text-blue-700 cursor-pointer"
+              >
+                {" "}
+                {email && email}{" "}
+              </a>
             </h3>
             <h3 className="w-fit">{articles["msg"][1]}</h3>
           </div>

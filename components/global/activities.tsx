@@ -11,19 +11,18 @@ import { useTranslations } from "next-intl";
 import { CiCircleMore } from "react-icons/ci";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Loading from "@/app/loading";
 
 const Activities = ({ titileClass }: { titileClass?: string }) => {
   const t = useTranslations("activities");
   const [activities, setactivities] = useState([]);
-  const  path  = usePathname();
-  const isHome = path == "/"
-  
+  const path = usePathname();
+  const isHome = path == "/";
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchActivities = async () => {
     try {
-    
-      
-      const querySnap =  collection(data, "activities");
+      const querySnap = collection(data, "activities");
       const activitiesDocs = await getDocs(querySnap);
       const lang = await language();
 
@@ -37,14 +36,10 @@ const Activities = ({ titileClass }: { titileClass?: string }) => {
           ...langData,
         };
       });
-      const filtered = activitiesData.filter(({latest})=>latest) ;
+      const filtered = activitiesData.filter(({ latest }) => latest);
       console.log(filtered);
-      if (isHome) setactivities(filtered) 
-      if (!isHome)setactivities(activitiesData)
-      
-      
-
-     
+      if (isHome) setactivities(filtered);
+      if (!isHome) setactivities(activitiesData);
     } catch (error) {
       console.error("Error fetching activities:", error);
       throw error;
@@ -54,8 +49,12 @@ const Activities = ({ titileClass }: { titileClass?: string }) => {
   useEffect(() => {
     fetchActivities();
 
-    return () => {};
+    setIsLoading(false);
   }, []);
+
+  if (isLoading)  <Loading />
+      
+ 
 
   return (
     <div>
@@ -72,7 +71,7 @@ const Activities = ({ titileClass }: { titileClass?: string }) => {
       </div>
 
       <div className={`${isHome && "overflow-x-auto overflow-y-hidden"} `}>
-        <div className={`flex  ${!isHome &&"flex-wrap"} gap-4 pt-6 `}>
+        <div className={`flex  ${!isHome && "flex-wrap"} gap-4 pt-6 `}>
           {" "}
           {activities &&
             activities.map((ele) => (
@@ -89,11 +88,13 @@ const Activities = ({ titileClass }: { titileClass?: string }) => {
               <FaSpinner className="text-2xl" />
             </div>
           )}
-           {isHome && <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%] ">
-            <Link href={`activities/`}>
-              <CiCircleMore className="w-3/4 h-3/4 flex justify-self-center self-center" />
-            </Link>
-          </div>}
+          {isHome && (
+            <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%] ">
+              <Link href={`activities/`}>
+                <CiCircleMore className="w-3/4 h-3/4 flex justify-self-center self-center" />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

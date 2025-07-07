@@ -7,37 +7,41 @@ import { useState, useEffect } from "react";
 import { data } from "@/firebase/config";
 import { getDocs, collection } from "firebase/firestore/lite";
 import { language } from "@/actions/set-language-action";
+import { CiCircleMore } from "react-icons/ci";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Loading from "@/app/loading";
 
+import { useTranslations } from "next-intl";
 
-import {useTranslations} from 'next-intl';
-
-
-const Latest = ({titileClass}: { titileClass?: string }) => {
-  const t = useTranslations("News")
+const Latest = ({ titileClass }: { titileClass?: string }) => {
+  const t = useTranslations("News");
   const [news, setNews] = useState([]);
+  const path = usePathname();
+  const isHome = path == "/";
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchNews = async () => {
     try {
-
-      const querySnap = await collection(data, "news");
+      const querySnap = collection(data, "news");
       const newsDocs = await getDocs(querySnap);
-      const lang = await language()
-     
-      
+      const lang = await language();
 
-       const newsData = newsDocs.docs.map((doc) => {
-      const docData = doc.data(); 
-      const langData = docData[lang] ; 
-      
-      return {
-        id: doc.id,
-        ...docData,      
-        ...langData,     
-      }});
-      
-      setNews(newsData);
+      const newsData = newsDocs.docs.map((doc) => {
+        const docData = doc.data();
+        const langData = docData[lang];
 
-     
+        return {
+          id: doc.id,
+          ...docData,
+          ...langData,
+        };
+      });
+
+      const filtered = newsData.filter(({ latest }) => latest);
+      console.log(filtered);
+      if (isHome) setNews(filtered);
+      if (!isHome) setNews(newsData);
     } catch (error) {
       console.error("Error fetching news:", error);
       throw error;
@@ -46,10 +50,12 @@ const Latest = ({titileClass}: { titileClass?: string }) => {
 
   useEffect(() => {
     fetchNews();
+    setIsLoading(false);
 
-    return () => {};
+
   }, []);
-     
+
+  if (isLoading) <Loading />;
 
   return (
     <div>
@@ -65,14 +71,27 @@ const Latest = ({titileClass}: { titileClass?: string }) => {
         </div>
       </div>
 
-      <div className="overflow-x-auto overflow-y-hidden ">
-        <div className="flex   sm:flex-wrap  gap-4 pt-6" >
+      <div className={`${isHome && "overflow-x-auto overflow-y-hidden"} `}>
+        <div className={`flex  ${!isHome && "flex-wrap"} gap-4 pt-6 `}>
           {" "}
-         
-          {news && news.map((ele)=>( <GridItem key={ele.id} path={"news/"}  img={ele.img} id={ele.id} title={ele.title}/>)) }
-          {!news && (<div className="flex justify-center"> 
-<FaSpinner  className="text-2xl"/>
-          </div>)}
+          {news &&
+            news.map((ele) => (
+              <GridItem
+                key={ele.id}
+                path={"news/"}
+                img={ele.img}
+                id={ele.id}
+                title={ele.title}
+              />
+            ))}
+             {isHome && (
+            <div className="relative mx-3 hover:scale-102 transition-transform duration-200 mb-4 w-[40%] md:w-[28%] lg:w-[22%] ">
+              <Link href={`news/`}>
+                <CiCircleMore className="w-3/4 h-3/4 flex justify-self-center self-center" />
+              </Link>
+            </div>
+          )}
+          
         </div>
       </div>
     </div>

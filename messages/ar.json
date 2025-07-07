@@ -11,7 +11,7 @@
     "CommunityDevelopment": "المجتمع",
     "team":"الفريق"
 
-  }
+  } 
   ,
   "footer":{
  "donate":"تبرع",
@@ -36,6 +36,16 @@
     "titleSpan":"الحالية",
     "subTitle":"انظر لاخر الانشطة والاحداث"
   } ,
+  "about":{
+    "vision":"روية",
+    "values":"القيم",
+    "title":"عنوان",
+    "principles":"المبادئ",
+    "goals":"الاهداف",
+    "article":"الرسالة"
+
+
+  },
   "stracture":{
     "msg":"الصفحة تحت التطوير",
 "404": "الصفحة غير موجودة"

@@ -35,6 +35,16 @@
     "titleSpan":"Now",
     "subTitle": "look at  the latest activities"
   } ,
+  "about":{
+    "vision":"vision",
+    "values":"values",
+    "title":"title",
+    "principles":"principles",
+    "goals":"goals",
+    "article":"message"
+
+
+  },
   "stracture":{"msg" : "page under stracture",
 "404": "there is no page"}
 }
