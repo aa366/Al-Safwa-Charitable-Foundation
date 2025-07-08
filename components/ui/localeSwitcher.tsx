@@ -50,11 +50,13 @@ if(isLoading){
 
   return (
    
-    <div>
-        <select  defaultValue={lang} onChange={(e)=>{handleChange(e.target.value)}} className='border-2 rounded-sm p-1' disabled={isLoading}>
+    <div className='relative'>
+      <label htmlFor="Languageswitcher" className='absolute top-0 -translate-y-1/2'></label>
+        <select name="Language switcher" id="Languageswitcher"  defaultValue={lang} onChange={(e)=>{handleChange(e.target.value)}} className='border-2 rounded-sm p-1' disabled={isLoading}>
             <option value="en">English</option>
             <option value="ar">عربي</option>
         </select>
+      
 
     </div>
   )

@@ -18,7 +18,7 @@ export default async  function RootLayout({
    const locale = await getLocale();
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body>
+      <body className="bg-[hsl(216,24%,96%)]">
         <ThemeProvider
           attribute="class"
           enableSystem

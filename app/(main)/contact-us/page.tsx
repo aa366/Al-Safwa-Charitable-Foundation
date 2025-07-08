@@ -6,13 +6,13 @@ import { language } from "@/actions/set-language-action";
 import { FiClock } from "react-icons/fi";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
-import Loading from "@/app/loading";
+
 
 const Page = () => {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
   const [email, setEmail] = useState(null);
-  let lang:string;
+ 
   const [currentLang, setCurrentLang] = useState("");
 
   const fetchAbout = async () => {
@@ -20,7 +20,7 @@ const Page = () => {
       
   
       const querySnap = await getDoc(doc(data, "pages", "contact-us"));
-      lang = await language();
+      const lang = await language();
    
       
       setCurrentLang(lang);
@@ -29,11 +29,14 @@ const Page = () => {
     
       
       const mail = querySnap.data()["email"];
+  
+      
 
       
 
       setEmail(mail);
       setArticles(aboutData);
+
     } catch (error) {
       console.error(error);
     } 
@@ -41,17 +44,17 @@ const Page = () => {
 
   useEffect(() => {
     fetchAbout();
-    setIsLoading(false);
+  
   }, []);
 
-  if (isLoading){return (<Loading /> )};
+
 
 
 
   return (
     <>
-      {Object.keys(articles) ? (
-        <div className="py-3">
+      {Object.keys(articles).length >0  ? (
+        <div className="py-3 font-bold">
           <div className="w-full grid grid-cols-1 md:grid-cols-3 place-items-stretch px-[10%] sm:text-xl  md:px-[3%] text-center text-white">
             <div className="flex items-center justify-center gap-2 p-2  w-auto md:text-xl bg-[#c23331e3] py-4">
               <FiClock className="text-5xl" />
@@ -67,7 +70,7 @@ const Page = () => {
                 <p>{articles["mainbranch"][1]}</p>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-2 p-2 bg-[#b0b32d] w-auto md:text-xl ">
+            <div className="flex items-center justify-center gap-2 p-2 bg-[#949627] w-auto md:text-xl ">
               <FaPhone className="text-4xl" />
               <div>
                 <h3>{articles["hotLine"][0]}</h3>
@@ -99,6 +102,7 @@ const Page = () => {
       ) : (
         <p className="text-gray-500">No articles found</p>
       )}
+    
     </>
   );
 };

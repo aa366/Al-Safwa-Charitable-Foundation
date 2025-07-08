@@ -64,11 +64,11 @@ export const Activities = () => {
       return item.id.includes(ele);
     });
 
-    (ele, oldVars, values, filtered);
+   
     setValues(filtered);
   };
   const handleEdit = (ele) => {
-    (ele);
+
 
     setSelected(ele);
     setShowEdit(true);
@@ -86,7 +86,7 @@ export const Activities = () => {
     if (selected.id == "NO ID") {
       try {
         selected.time = Timestamp.now();
-        (selected);
+      
         const coll = collection(data, "activities");
 
         await addDoc(coll, selected);
@@ -94,7 +94,7 @@ export const Activities = () => {
         setSelected(stractue);
         setShowEdit(false);
 
-        ("return");
+      
       } catch (error) {
         console.error(error);
       } finally {
@@ -368,11 +368,11 @@ export const News = () => {
       return item.id.includes(ele);
     });
 
-    (ele, oldVars, values, filtered);
+   
     setValues(filtered);
   };
   const handleEdit = (ele) => {
-    (ele);
+    
 
     setSelected(ele);
     setShowEdit(true);
@@ -390,7 +390,7 @@ export const News = () => {
     if (selected.id == "NO ID") {
       try {
         selected.time = Timestamp.now();
-        (selected);
+       
         const coll = collection(data, "news");
 
         await addDoc(coll, selected);
@@ -398,7 +398,7 @@ export const News = () => {
         setSelected(stractue);
         setShowEdit(false);
 
-        ("return");
+        
       } catch (error) {
         console.error(error);
       } finally {
@@ -650,7 +650,7 @@ export const Branches = () => {
 
         return vars;
       });
-      (minData);
+     
 
       setValues(minData);
       setSearchFilter(minData);
@@ -952,7 +952,7 @@ export const Team = () => {
 
   const fetchAct = async () => {
     try {
-      const collect = await collection(data, "team");
+      const collect =  collection(data, "team");
 
       const querrySnap = await getDocs(collect);
 
@@ -983,11 +983,11 @@ export const Team = () => {
       return item.id.includes(ele);
     });
 
-    (ele, oldVars, values, filtered);
+  
     setValues(filtered);
   };
   const handleEdit = (ele) => {
-    (ele);
+  
 
     setSelected(ele);
     setShowEdit(true);
@@ -1005,7 +1005,7 @@ export const Team = () => {
     if (selected.id == "NO ID") {
       try {
         selected.time = Timestamp.now();
-        (selected);
+        
         const coll = collection(data, "team");
 
         await addDoc(coll, selected);
@@ -1013,7 +1013,7 @@ export const Team = () => {
         setSelected(stractue);
         setShowEdit(false);
 
-        ("return");
+       
       } catch (error) {
         console.error(error);
       } finally {
@@ -1252,7 +1252,7 @@ export const Faq = () => {
 
         return vars;
       });
-      (minData);
+     
 
       setValues(minData);
       setSearchFilter(minData);
@@ -1292,7 +1292,7 @@ export const Faq = () => {
     if (selected.id == "NO ID") {
       try {
         selected.time = Timestamp.now();
-        (selected);
+    
         const coll = collection(data, "faq");
 
         await addDoc(coll, selected);
@@ -1506,7 +1506,7 @@ export const About = () => {
       const minDataBanner = querrySnapBanner.data();
       setBanner(minDataBanner);
 
-      (minDataBanner);
+     
     } catch (error) {
       console.error(error);
     }
@@ -1539,7 +1539,7 @@ export const About = () => {
     try {
        await updateDoc(doc(data,"pages","vars"),bannerCont)
       setShowBanner(false);
-      (bannerCont);
+     
     } catch (error) {
       console.error(error);
     }
@@ -1571,7 +1571,7 @@ export const About = () => {
 
       case "del": 
         const newHolder = holder.filter((s)=>s!=url)
-        (newHolder);
+        
         
         setBannerCont({banner:newHolder})
        

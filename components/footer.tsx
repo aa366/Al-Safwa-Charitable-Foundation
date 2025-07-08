@@ -1,34 +1,59 @@
+"use client";
 import React from "react";
-import {getTranslations} from 'next-intl/server';
+
 import Link from "next/link";
-import {
-  FaChild,
-  FaYoutube,
-  FaTiktok,
-  FaFacebookF,
-  FaInstagram,
-  FaBars,
-} from "react-icons/fa";
-import { FaPhone, FaSackDollar, FaXTwitter } from "react-icons/fa6";
-const Footer = async () => {
-  const  t = await  getTranslations("footer");
+import Image from "next/image";
+import { useState , useEffect } from "react";
+import {useTranslations} from 'next-intl';
+import {data} from "@/firebase/config";
+import { getDoc, doc } from "firebase/firestore/lite";
+
+const Footer =  () => {
+  const  t =   useTranslations("footer");
+    const [pageData , setPageData] = useState({});
+
+        const fetchInfos = async () => {
+      try {
+        
+    
+        const querySnap = await getDoc(doc(data, "pages", "statics"));
+
+        const minData = querySnap.data();
+       
+        setPageData(minData);
+        
+        
+  
+      } catch (error) {
+        console.error(error);
+      } 
+    };
+      useEffect(() => {
+        fetchInfos();
+       
+      }, []);
+  
+
   return (
     <footer className="border-t-[.5rem] border-green-600  ">
 
       <div className="flex flex-col justify-center">
 
-          <div className="md:flex">
-          <Link href={`/`} className="w-fit h-fit">
-            <img
-              src="/logo.png"
+          <div className="md:flex md:justify-evenly">
+          <Link href={`/`} className="w-fit h-fit md:ml-2">
+            <Image
+              src={pageData["logo"] || "/logo.png"} 
               alt="El Safwat"
               className="  w-[100%]  md:w-[80%] "
+              width={100}
+              height={100}
+              unoptimized={true}
             />
           </Link>
           <div className="flex flex-col items-center w-full md:text-xl">
             <h3>{t("welcom")}</h3>
-            <a href="tel:%20+1%20(646)%20710-0836" className="text-blue-700">+1 (646) 710-0836</a>
-            <a href="mailto:saalsa123456@gmail.com" className="text-blue-700">saalsa123456@gmail.com</a>
+            <a href={pageData["tel-us"]?pageData["tel-us"]: "+1 (646) 710-0836"} className="text-blue-700">{pageData["tel-us"]?pageData["tel-us"]: "+1 (646) 710-0836"} </a>
+            <a href={pageData["mail"]?pageData["mail"]: "+1 (646) 710-0836"}  className="text-blue-700">{pageData["mail"]?pageData["mail"]: "+1 (646) 710-0836"} </a>
           </div>
         </div>
 
@@ -37,21 +62,33 @@ const Footer = async () => {
         
 
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-3  text-center text-blue-700 capitalize">
-          <Link href={`/news`}>
-            <li>{t("news")}</li>
+          <li>
+ <Link href={`/news`}>
+           {t("news")}
           </Link>
-          <Link href={`/privacy-policy`}>
+          </li>
+
+          <li>
+  <Link href={`/privacy-policy`}>
             {" "}
-            <li>{t("policy")}</li>
+           {t("policy")}
           </Link>
-          <Link href={`/faq`}>
+          </li>
+         
+        <li>
+ <Link href={`/faq`}>
             {" "}
-            <li>{t("freq")}</li>
+            {t("freq")}
           </Link>
-          <Link href={`/volunteering`}>
+        </li>
+        <li>
+   <Link href={`/volunteering`}>
             {" "}
-            <li>{t("volunteer")}</li>
+          {t("volunteer")}
           </Link>
+        </li>
+         
+       
         </ul>
 
       
