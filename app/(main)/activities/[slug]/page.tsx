@@ -33,7 +33,7 @@ const Page = ({ params }) => {
       const lang = await language();
       const querySnap = await getDoc(doc(data, "activities", slug));
       const newData = await querySnap.data();
- (slug,lang,querySnap,newData) ;
+
       const date = formatDate(newData["time"]);
       const filteredData = {
         ...newData,

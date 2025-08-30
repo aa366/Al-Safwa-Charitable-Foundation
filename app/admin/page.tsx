@@ -24,7 +24,9 @@ const Page = () => {
       
       try {
         await signInWithEmailAndPassword(auth,email,password)
-        setLogged(auth.currentUser)
+        setLogged(auth.currentUser!=null)
+       
+        
       
         
 
@@ -46,7 +48,7 @@ const Page = () => {
     }
     
 if(!logged){
-  console.log("out");
+
   
     return (
     <div className="w-full h-screen flex fixed justify-center pt-5 bg-gray-600 text-lg">
